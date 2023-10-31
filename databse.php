@@ -1,8 +1,8 @@
 <?php
-  $servername = "mysql";
+  $servername = "localhost";
   $dbname = "weerstation";
-  $username = "root";
-  $password = "qwerty";
+  $username = "weerstation";
+  $password = "Kjeltmeteent";
 
   
   
