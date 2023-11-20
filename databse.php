@@ -84,7 +84,7 @@
     <?php
       if ($minReading) {
         echo "De laagste waarde van vandaag is: " . $minReading['min_waarde'] . " graden";
-        echo " op datum: " . $minReading['tijd'];
+        echo " op datum: " . $minReading['time'];
     }
     ?> 
     </div>
@@ -92,7 +92,7 @@
     <?php 
       if ($maxReading) {
       echo "De hoogste waarde van vandaag is: " . $maxReading['max_waarde'] . " graden";
-      echo " op datum: " . $minReading['tijd'];
+      echo " op datum: " . $minReading['time'];
       }
       $dbconnect = null;   
 			?>
