@@ -36,7 +36,7 @@
       die("Geen connectie");
     }
 
-    $sql = $dbconnect->prepare("SELECT MIN(temp) AS min_waarde, weerstation.time FROM weerstation WHERE DATE(weerstation.time) = CURDATE()");
+    $sql = $dbconnect->prepare("SELECT MIN(temp) AS min_waarde, timedate FROM weerstation WHERE DATE(timedate) = CURDATE()");
     $sql->execute();
 
     return $sql->fetch();
