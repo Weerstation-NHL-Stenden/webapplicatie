@@ -18,7 +18,7 @@
     if(!isset($dbconnect)){
       die("Geen connectie");
     }
-    $sql = $dbconnect->prepare("SELECT uitkomst, tijd FROM weerstation ORDER BY tijd DESC LIMIT 1");
+    $sql = $dbconnect->prepare("SELECT temp, rain, airPress, humidity, windspeed, winddirection, co2, weerstation.time FROM weerstation ORDER BY weerstation.time DESC LIMIT 1");
     $sql->execute();
     return $sql->fetch();
   }
@@ -36,7 +36,7 @@
       die("Geen connectie");
     }
 
-    $sql = $dbconnect->prepare("SELECT MIN(uitkomst) AS min_waarde, tijd FROM weerstation WHERE DATE(tijd) = CURDATE()");
+    $sql = $dbconnect->prepare("SELECT MIN(temp) AS min_waarde, weerstation.time FROM weerstation WHERE DATE(weerstation.time) = CURDATE()");
     $sql->execute();
 
     return $sql->fetch();
@@ -55,7 +55,7 @@
       die("Geen connectie");
     }
 
-    $sql = $dbconnect->prepare("SELECT MAX(uitkomst) AS max_waarde, tijd FROM weerstation WHERE DATE(tijd) = CURDATE()");
+    $sql = $dbconnect->prepare("SELECT MAX(temp) AS max_waarde, weerstation.time FROM weerstation WHERE DATE(weerstation.time) = CURDATE()");
     $sql->execute();
 
     return $sql->fetch();
@@ -75,8 +75,8 @@
     <div>
 			<?php
 			if ($last_reading) {
-          echo "De laatst gemeten tempratuur is " . $last_reading['uitkomst'] . " graden";
-          echo " op datum: " . $last_reading['tijd'];
+          echo "De laatst gemeten tempratuur is " . $last_reading['temp'] . " graden";
+          echo " op datum: " . $last_reading['weerstation.time'];
       }
       ?>
     </div>
