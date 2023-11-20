@@ -25,7 +25,7 @@ while True:
             value = value[:4]
 
             try:
-                cursor.execute("INSERT INTO weerstation (uitkomst) VALUES (%s)", (value,))
+                cursor.execute("INSERT INTO weerstation (temp) VALUES (%s)", (value,))
                 sql_conn.commit()
             except mysql.connector.Error as err:
                 print("MySQL Error:", err)
