@@ -32,11 +32,66 @@ header div{
 header h1{
     display: inline-block;
     width: auto;
-    font-family: interRegular;
+    font-family: interRegular, sans-serif;
 }
 
 header h2{
     display: inline-block;
     width: auto;
-    font-family: interLight;
+    font-family: interLight, sans-serif;
+}
+
+main{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+    display: grid;
+    grid-template-columns: 35% 25% 25% 15%;
+    grid-template-rows: 20% 30% 30% 20%;
+    background-color: white;
+    border-radius: 25px;
+    width: 20%;
+    align-items: center;
+    min-width: 250px;
+    margin-bottom: 4vh;
+}
+
+.icon{
+    width: auto;
+    height: 80%;
+    margin: auto;
+    grid-column: 1;
+    grid-row: 1 / 5;
+}
+
+.itemname{
+    grid-column: 2 / 4;
+    grid-row: 2;
+    font-family: interRegular, sans-serif;
+    margin-bottom: 0.2em;
+    margin-top: auto;
+    font-size: large;
+}
+
+.itemvalue{
+    grid-column: 2 / 4;
+    grid-row: 3;
+    font-family: interLight, sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: xx-large;
+}
+
+.more{
+    grid-column: 4;
+    grid-row: 4;
+    margin: auto auto auto 0;
+    height: 100%;
 }
