@@ -1,3 +1,13 @@
+@font-face {
+    font-family: interRegular;
+    src: url(../font/Inter-Regular.ttf);
+}
+
+@font-face {
+    font-family: interLight;
+    src: url(../font/Inter-Light.ttf);
+}
+
 html{
     background-color: lightgray;
 }
@@ -22,9 +32,11 @@ header div{
 header h1{
     display: inline-block;
     width: auto;
+    font-family: interRegular;
 }
 
 header h2{
     display: inline-block;
     width: auto;
+    font-family: interLight;
 }
