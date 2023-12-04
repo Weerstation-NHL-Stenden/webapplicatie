@@ -61,6 +61,7 @@ main{
     align-items: center;
     min-width: 250px;
     margin-bottom: 4vh;
+    padding: 2% 0 2% 0;
 }
 
 .icon{
