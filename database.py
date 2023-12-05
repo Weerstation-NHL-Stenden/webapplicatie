@@ -17,6 +17,10 @@ except mysql.connector.Error as err:
 
 cursor = sql_conn.cursor()
 
+leftover_temp = None
+leftover_airPress = None
+
+
 while True:
     try:
         serial_data = serial_port.read(20)
@@ -26,19 +30,45 @@ while True:
             print("Value: " + value)
             value.replace(" ", "")
             value_list = value.split("|")
-            print("Valuelist: " + str(value_list))
-            temp = value_list[0]
-            print("Temp: " + temp)
-            humidity = value_list[1]
-            print("Humidity: " + humidity)
-            airPress = value_list[2]
-            print("Airpress" + airPress)
+            for item in value_list:
+                if item.count("a") == 2:
+                    temporary_temp = item
+                if item.count("b") == 2:
+                    temporary_humidity = item
+                if item.count("c") == 2:
+                    temporary_airPress = item
+                if item.count("a") == 1:
+                    if leftover_temp is not None:
+                        temporary_temp = leftover_temp + item
+                    else:
+                        leftover_temp = item
+                        temporary_temp = None
+                if item.count("c") == 1:
+                    if leftover_airPress is not None:
+                        temporary_airPress = leftover_airPress + item
+                    else:
+                        leftover_airPress = item
+                        temporary_airPress = None
 
-            try:
-                cursor.execute("INSERT INTO weerstation (temp, airPress, humidity) VALUES (%s, %s, %s)", (temp, airPress, humidity))
-                sql_conn.commit()
-            except mysql.connector.Error as err:
-                print("MySQL Error:", err)
+            print("Valuelist: " + str(value_list))
+            if temporary_temp is not None and temporary_airPress is not None:
+                temp = temporary_temp.replace("a", "")
+                humidity = temporary_humidity.replace("b", "")
+                airPress = temporary_airPress.replace("c", "")
+                temporary_temp = None
+                temporary_humidity = None
+                temporary_airPress = None
+                print("Temp: " + temp)
+                print("Humidity: " + humidity)
+                print("Airpress: " + airPress)
+                try:
+                    cursor.execute("INSERT INTO weerstation (temp, airPress, humidity) VALUES (%s, %s, %s)",
+                                   (temp, airPress, humidity))
+                    sql_conn.commit()
+                except mysql.connector.Error as err:
+                    print("MySQL Error:", err)
+            else:
+                continue
 
     except KeyboardInterrupt:
         break
