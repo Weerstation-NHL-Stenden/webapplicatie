@@ -77,6 +77,7 @@
 			if ($last_reading) {
           echo "De laatst gemeten tempratuur is " . $last_reading['temp'] . " graden";
           echo " op datum: " . $last_reading['timedate'];
+          echo " Er is " . $last_reading['rain'] . " milimeter regen gevallen";
       }
       ?>
     </div>
