@@ -17,13 +17,14 @@ except mysql.connector.Error as err:
 
 cursor = sql_conn.cursor()
 
-leftover_temp = None
-leftover_airPress = None
+
+temporary_temperature = None
+temporary_airPress = None
 
 
 while True:
     try:
-        serial_data = serial_port.read(20)
+        serial_data = serial_port.read(25)
         if serial_data:
             value = serial_data.decode("utf-8")
             serial_port.reset_input_buffer()
@@ -33,22 +34,13 @@ while True:
             for item in value_list:
                 if item.count("a") == 2:
                     temporary_temp = item
+                    print("temporary temp: " + temporary_temp)
                 if item.count("b") == 2:
                     temporary_humidity = item
+                    print("temporary humidity: " + temporary_humidity)
                 if item.count("c") == 2:
                     temporary_airPress = item
-                if item.count("a") == 1:
-                    if leftover_temp is not None:
-                        temporary_temp = leftover_temp + item
-                    else:
-                        leftover_temp = item
-                        temporary_temp = None
-                if item.count("c") == 1:
-                    if leftover_airPress is not None:
-                        temporary_airPress = leftover_airPress + item
-                    else:
-                        leftover_airPress = item
-                        temporary_airPress = None
+                    print("temporary airPress: " + temporary_airPress)
 
             print("Valuelist: " + str(value_list))
             if temporary_temp is not None and temporary_airPress is not None:
