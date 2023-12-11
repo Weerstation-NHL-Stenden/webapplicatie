@@ -28,19 +28,34 @@ getLastReadings();
             <div class="item">
                 <img class="icon" src="img/strong-wind.svg">
                 <p class="itemname">Wind speed</p>
-                <p class="itemvalue"><?=$result[1]?> km/h</p>
+                <p class="itemvalue"><?=$result[4]?> km/h</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
                 <img class="icon" src="img/humidity.svg">
                 <p class="itemname">Humidity</p>
-                <p class="itemvalue"><?=$result[2]?>%</p>
+                <p class="itemvalue"><?=$result[3]?>%</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
                 <img class="icon" src="img/">
                 <p class="itemname">Wind direction</p>
-                <p class="itemvalue">West</p>
+                <?php
+                    if($result[5] >= 45 && $result[5] < 135){
+                        $winddirection = "East";
+                    }
+                    if($result[5] >= 135 && $result[5] < 225){
+                        $winddirection = "South";
+                    }
+                    if($result[5] >= 225 && $result[5] < 315){
+                        $winddirection = "West";
+                    }
+                    if($result[5] < 45 || $result[5] >= 315){
+                        $winddirection = "North";
+                    }
+
+                ?>
+                <p class="itemvalue"><?=$winddirection?></p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
@@ -52,7 +67,7 @@ getLastReadings();
             <div class="item">
                 <img class="icon" src="img/rain.svg">
                 <p class="itemname">Rain</p>
-                <p class="itemvalue">2 mm/h</p>
+                <p class="itemvalue"><?=$result[1]?> mm/h</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
         </main>
