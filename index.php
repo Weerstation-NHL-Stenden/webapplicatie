@@ -1,3 +1,7 @@
+<?php
+require_once("databse.php");
+getLastReadings();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +22,7 @@
             <div class="item">
                 <img class="icon" src="img/thermometer.svg">
                 <p class="itemname">Temperature</p>
-                <p class="itemvalue">10&deg;C</p>
+                <p class="itemvalue"><?=$result[0]?>&deg;C</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">

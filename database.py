@@ -20,6 +20,7 @@ cursor = sql_conn.cursor()
 
 temporary_temperature = None
 temporary_airPress = None
+temporary_co2 = None
 
 
 while True:
@@ -41,21 +42,27 @@ while True:
                 if item.count("c") == 2:
                     temporary_airPress = item
                     print("temporary airPress: " + temporary_airPress)
+                if item.count("d") == 2:
+                    temporary_co2 = item
+                    print("temporary co2: " + temporary_co2)
 
             print("Valuelist: " + str(value_list))
-            if temporary_temp is not None and temporary_airPress is not None:
+            if temporary_temp is not None and temporary_airPress is not None and temporary_co2 is not None:
                 temp = temporary_temp.replace("a", "")
                 humidity = temporary_humidity.replace("b", "")
                 airPress = temporary_airPress.replace("c", "")
+                co2 = temporary_co2.replace("d", "")
                 temporary_temp = None
                 temporary_humidity = None
                 temporary_airPress = None
+                temporary_co2 = None
                 print("Temp: " + temp)
                 print("Humidity: " + humidity)
                 print("Airpress: " + airPress)
+                print("CO2: " + co2)
                 try:
-                    cursor.execute("INSERT INTO weerstation (temp, airPress, humidity) VALUES (%s, %s, %s)",
-                                   (temp, airPress, humidity))
+                    cursor.execute("INSERT INTO weerstation (temp, airPress, humidity, c02) VALUES (%s, %s, %s, %s)",
+                                   (temp, airPress, humidity, co2))
                     sql_conn.commit()
                 except mysql.connector.Error as err:
                     print("MySQL Error:", err)

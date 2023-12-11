@@ -1,8 +1,8 @@
 <?php
-  $servername = "localhost";
-  $dbname = "weerstation";
-  $username = "weerstation";
-  $password = "Kjeltmeteent";
+$servername = "mysql";
+$dbname = "weerstation";
+$username = "root";
+$password = "qwerty";
 
   
   
@@ -20,7 +20,9 @@
     }
     $sql = $dbconnect->prepare("SELECT temp, rain, airPress, humidity, windspeed, winddirection, co2, timedate FROM weerstation ORDER BY timedate DESC LIMIT 1");
     $sql->execute();
-    return $sql->fetch();
+    $result = $sql->fetchAll();
+    $dbconnect = null;
+    return $result;
   }
 
   function minReading() {
@@ -64,40 +66,6 @@
     $last_reading = getLastReadings();
     $minReading = minReading();
 ?>
-
-  <!doctype HTML>
-<html>
-	<head> 
-		<title> weerstation </title> 
-		<meta charset="utf-8">
-	</head>
-	<body>
-    <div>
-			<?php
-			if ($last_reading) {
-          echo "De laatst gemeten tempratuur is " . $last_reading['temp'] . " graden";
-          echo " op datum: " . $last_reading['timedate'];
-          echo " Er is " . $last_reading['rain'] . " milimeter regen gevallen";
-      }
-      ?>
-    </div>
-    <div>
-    <?php
-      if ($minReading) {
-        echo "De laagste waarde van vandaag is: " . $minReading['min_waarde'] . " graden";
-        echo " op datum: " . $minReading['timedate'];
-    }
-    ?> 
-    </div>
-    <div>
-    <?php 
-      if ($maxReading) {
-      echo "De hoogste waarde van vandaag is: " . $maxReading['max_waarde'] . " graden";
-      echo " op datum: " . $minReading['timedate'];
-      }
-      $dbconnect = null;   
-			?>
-    </div>
-
-	</body> 
-</html> 
+<?php
+$result = getLastReadings()[0];
+?>

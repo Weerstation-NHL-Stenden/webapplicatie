@@ -41,6 +41,23 @@ header h2{
     font-family: interLight, sans-serif;
 }
 
+@media only screen and (max-width: 580px) {
+    header{
+        display: flex;
+    }
+    header div{
+        display: block;
+    }
+    header h1{
+        display: block;
+        text-align: center;
+    }
+    header h2{
+        display: block;
+        text-align: center;
+    }
+}
+
 main{
     width: 70%;
     margin-left: auto;
