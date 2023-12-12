@@ -14,12 +14,12 @@ getLastReadings();
     <body>
         <?php include_once("header.html")?>
         <main>
-            <div class="item">
+            <a href="temperature.php" class="item">
                 <img class="icon" src="img/thermometer.svg">
                 <p class="itemname">Temperature</p>
                 <p class="itemvalue"><?=$result[0]?>&deg;C</p>
                 <img class="more" src="img/nav-arrow-right.svg">
-            </div>
+            </a>
             <div class="item">
                 <img class="icon" src="img/strong-wind.svg">
                 <p class="itemname">Wind speed</p>
