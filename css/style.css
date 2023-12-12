@@ -68,6 +68,13 @@ main{
     flex-wrap: wrap;
 }
 
+#graphmain{
+    height: 80vh;
+    background-color: white;
+    border-radius: 25px;
+    align-items: center;
+}
+
 .item{
     display: grid;
     grid-template-columns: 35% 25% 25% 15%;
@@ -112,4 +119,17 @@ main{
     grid-row: 4;
     margin: auto auto auto 0;
     height: 100%;
+}
+
+canvas{
+    width: 80%;
+}
+
+#hometitle{
+    color: black;
+    text-decoration: none;
+}
+
+#hometitle:hover{
+    text-decoration: underline;
 }

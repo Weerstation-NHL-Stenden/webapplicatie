@@ -12,12 +12,7 @@ getLastReadings();
         <title>Weatherstation</title>
     </head>
     <body>
-        <header>
-            <div>
-                <h1>Weatherstation</h1>
-                <h2>Last update: <?=$result[7]?></h2>
-            </div>
-        </header>
+        <?php include_once("header.html")?>
         <main>
             <div class="item">
                 <img class="icon" src="img/thermometer.svg">
