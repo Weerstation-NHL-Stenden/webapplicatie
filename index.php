@@ -33,7 +33,7 @@ getLastReadings();
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
-                <img class="icon" src="img/">
+                <img class="icon" id="compass" src="img/compass_east.svg">
                 <p class="itemname">Wind direction</p>
                 <?php
                     if($result[5] >= 45 && $result[5] < 135){
