@@ -33,30 +33,37 @@ getLastReadings();
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
-                <img class="icon" id="compass" src="img/compass_east.svg">
-                <p class="itemname">Wind direction</p>
                 <?php
-                    if($result[5] >= 45 && $result[5] < 135){
-                        $winddirection = "East";
-                    }
-                    if($result[5] >= 135 && $result[5] < 225){
-                        $winddirection = "South";
-                    }
-                    if($result[5] >= 225 && $result[5] < 315){
-                        $winddirection = "West";
-                    }
-                    if($result[5] < 45 || $result[5] >= 315){
-                        $winddirection = "North";
-                    }
-
+                if ($result[5] >= 337.5 || $result[5] < 22.5) {
+                    $winddirection = "North";
+                } elseif ($result[5] >= 22.5 && $result[5] < 67.5) {
+                    $winddirection = "Northeast";
+                } elseif ($result[5] >= 67.5 && $result[5] < 112.5) {
+                    $winddirection = "East";
+                } elseif ($result[5] >= 112.5 && $result[5] < 157.5) {
+                    $winddirection = "Southeast";
+                } elseif ($result[5] >= 157.5 && $result[5] < 202.5) {
+                    $winddirection = "South";
+                } elseif ($result[5] >= 202.5 && $result[5] < 247.5) {
+                    $winddirection = "Southwest";
+                } elseif ($result[5] >= 247.5 && $result[5] < 292.5) {
+                    $winddirection = "West";
+                } elseif ($result[5] >= 292.5 && $result[5] < 337.5) {
+                    $winddirection = "Northwest";
+                } else {
+                    $winddirection = "Error";
+                }
+                $imageName = strtolower($winddirection);
                 ?>
+                <img class="icon" id="compass" src="img/compass_<?=$imageName?>.svg">
+                <p class="itemname">Wind direction</p>
                 <p class="itemvalue"><?=$winddirection?></p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
                 <img class="icon" src="img/cloud.svg">
                 <p class="itemname">CO2</p>
-                <p class="itemvalue"><?=$result[4]?> PPM</p>
+                <p class="itemvalue"><?=$result[6]?> PPM</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </div>
             <div class="item">
