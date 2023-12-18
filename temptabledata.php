@@ -1,8 +1,5 @@
 <?php
-$servername = "mysql";
-$dbname = "weerstation";
-$username = "root";
-$password = "qwerty";
+require_once("secrets.php");
 
 try{
     $dbconnect= new PDO ("mysql:host=$servername;dbname=$dbname;charset=utf8","$username","$password");
