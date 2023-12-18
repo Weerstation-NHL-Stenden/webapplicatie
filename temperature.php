@@ -1,5 +1,15 @@
 <?php
 require_once("databse.php");
+
+$dataurl = "temptabledata.php";
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $start = filter_input(INPUT_POST, "start", FILTER_SANITIZE_SPECIAL_CHARS);
+    $end = filter_input(INPUT_POST, "end", FILTER_SANITIZE_SPECIAL_CHARS);
+    if(isset($start) && isset($end)){
+        $dataurl = $dataurl . "?start=" . $start . "&end=" . $end;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +28,7 @@ require_once("databse.php");
                 <canvas id="tempChart" width="400" height="200"></canvas>
             </div>
             <script>
-                fetch('temptabledata.php')
+                fetch('<?=$dataurl?>')
                     .then(response => response.json())
                     .then(data => {
                         const timedate = data.map(item => item.timedate);
@@ -65,7 +75,17 @@ require_once("databse.php");
                     tempChart.resize();
                 });
             </script>
-            <div>
+            <form action="temperature.php" method="POST">
+                <label for="start">Start Date:</label>
+                <input type="date" id="start" name="start">
+
+                <label for="end">End Date:</label>
+                <input type="date" id="end" name="end">
+
+                <button type="submit">Update Chart</button>
+            </form>
+            <hr>
+            <div class="daily">
                 <p>The lowest temperature today was: <?=minReading() ?></p>
                 <p>The highest temperature today was: <?=maxReading() ?></p>
             </div>

@@ -157,3 +157,14 @@ canvas{
 #hometitle:hover{
     text-decoration: underline;
 }
+
+hr{
+    display: block;
+    width: 100%;
+}
+
+.daily{
+    width: 100%;
+    text-align: center;
+    font-family: interRegular, sans-serif;
+}
