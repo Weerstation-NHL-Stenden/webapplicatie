@@ -38,7 +38,7 @@ require_once("secrets.php");
     $sql = $dbconnect->prepare("SELECT MIN(temp) AS min_waarde, timedate FROM weerstation WHERE DATE(timedate) = CURDATE()");
     $sql->execute();
 
-    return $sql->fetch();
+    return $sql->fetch()[0];
   }
 
   function maxReading() {
@@ -57,7 +57,7 @@ require_once("secrets.php");
     $sql = $dbconnect->prepare("SELECT MAX(temp) AS max_waarde, timedate FROM weerstation WHERE DATE(timedate) = CURDATE()");
     $sql->execute();
 
-    return $sql->fetch();
+    return $sql->fetch()[0];
   }
     $maxReading = maxReading();
     $last_reading = getLastReadings();

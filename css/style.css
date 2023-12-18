@@ -75,6 +75,12 @@ main{
     align-items: center;
 }
 
+.chartcontainer{
+    display: block;
+    width: 80%;
+    height: 80%;
+}
+
 .item{
     display: grid;
     grid-template-columns: 35% 25% 25% 15%;

@@ -1,6 +1,5 @@
 <?php
 require_once("databse.php");
-getLastReadings();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +14,9 @@ getLastReadings();
     <body>
         <?php include_once("header.html")?>
         <main id="graphmain">
-            <canvas id="tempChart" width="400" height="200"></canvas>
+            <div class="chartcontainer">
+                <canvas id="tempChart" width="400" height="200"></canvas>
+            </div>
             <script>
                 fetch('temptabledata.php')
                     .then(response => response.json())
@@ -50,7 +51,24 @@ getLastReadings();
                             }
                         });
                     });
+
+                function beforePrintHandler () {
+                    for (let id in Chart.instances) {
+                        Chart.instances[id].resize();
+                    }
+                }
+
+                window.addEventListener('beforeprint', () => {
+                    tempChart.resize(600, 600);
+                });
+                window.addEventListener('afterprint', () => {
+                    tempChart.resize();
+                });
             </script>
+            <div>
+                <p>The lowest temperature today was: <?=minReading() ?></p>
+                <p>The highest temperature today was: <?=maxReading() ?></p>
+            </div>
         </main>
     </body>
 </html>
