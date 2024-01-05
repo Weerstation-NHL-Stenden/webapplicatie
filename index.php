@@ -20,12 +20,12 @@ getLastReadings();
                 <p class="itemvalue"><?=$result[0]?>&deg;C</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </a>
-            <div class="item">
+            <a href="windspeed.php" class="item">
                 <img class="icon" src="img/strong-wind.svg">
                 <p class="itemname">Wind speed</p>
                 <p class="itemvalue"><?=$result[4]?> km/h</p>
                 <img class="more" src="img/nav-arrow-right.svg">
-            </div>
+            </a>
             <div class="item">
                 <img class="icon" src="img/humidity.svg">
                 <p class="itemname">Humidity</p>
