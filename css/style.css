@@ -73,6 +73,7 @@ main{
     background-color: white;
     border-radius: 25px;
     align-items: center;
+    padding-bottom: 1%;
 }
 
 .chartcontainer{
