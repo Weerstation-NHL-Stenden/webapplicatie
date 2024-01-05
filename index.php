@@ -26,12 +26,12 @@ getLastReadings();
                 <p class="itemvalue"><?=$result[4]?> km/h</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </a>
-            <div class="item">
+            <a href="humidity.php" class="item">
                 <img class="icon" src="img/humidity.svg">
                 <p class="itemname">Humidity</p>
                 <p class="itemvalue"><?=$result[3]?>%</p>
                 <img class="more" src="img/nav-arrow-right.svg">
-            </div>
+            </a>
             <div class="item">
                 <?php
                 if ($result[5] >= 337.5 || $result[5] < 22.5) {
