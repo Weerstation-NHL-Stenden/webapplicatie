@@ -58,20 +58,19 @@ getLastReadings();
                 <img class="icon" id="compass" src="img/compass_<?=$imageName?>.svg">
                 <p class="itemname">Wind direction</p>
                 <p class="itemvalue"><?=$winddirection?></p>
-                <img class="more" src="img/nav-arrow-right.svg">
             </div>
-            <div class="item">
+            <a href="co2.php" class="item">
                 <img class="icon" src="img/cloud.svg">
                 <p class="itemname">CO2</p>
                 <p class="itemvalue"><?=$result[6]?> PPM</p>
                 <img class="more" src="img/nav-arrow-right.svg">
-            </div>
-            <div class="item">
+            </a>
+            <a href="rain.php" class="item">
                 <img class="icon" src="img/rain.svg">
                 <p class="itemname">Rain</p>
                 <p class="itemvalue"><?=$result[1]?> mm/h</p>
                 <img class="more" src="img/nav-arrow-right.svg">
-            </div>
+            </a>
         </main>
     </body>
 </html>
