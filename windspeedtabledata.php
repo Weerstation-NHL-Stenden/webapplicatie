@@ -11,7 +11,7 @@ function getAll(){
     try{
         require("secrets.php");
         $dbconnect= new PDO ("mysql:host=$servername;dbname=$dbname;charset=utf8","$username","$password");
-        $query = "SELECT timedate, windspeed FROM weerstation ORDER BY timedate ASC LIMIT 10";
+        $query = "SELECT timedate, windspeed FROM weerstation ORDER BY timedate DESC LIMIT 200";
         $stmt = $dbconnect->prepare($query);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

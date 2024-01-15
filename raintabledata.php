@@ -29,7 +29,7 @@ function getByDate($startdate, $enddate){
     try{
         require("secrets.php");
         $dbconnect= new PDO ("mysql:host=$servername;dbname=$dbname;charset=utf8","$username","$password");
-        $query = "SELECT timedate, rain FROM weerstation WHERE timedate >= :start AND timedate <= :end ORDER BY timedate ASC";
+        $query = "SELECT timedate, rain FROM weerstation WHERE timedate >= :start AND timedate <= :end ORDER BY timedate DESC LIMIT 200";
         $stmt = $dbconnect->prepare($query);
         $stmt->bindParam(':start', $startdate, PDO::PARAM_STR);
         $stmt->bindParam(':end', $enddate, PDO::PARAM_STR);
