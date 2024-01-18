@@ -71,6 +71,19 @@ getLastReadings();
                 <p class="itemvalue"><?=$result[1]?> mm/h</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </a>
+            <a href="light.php" class="item">
+                <img class="icon" src="img/sun-light.svg">
+                <p class="itemname">Light</p>
+                <?php $shortlight = substr($result[9], 0, -3)?>
+                <p class="itemvalue"><?=$shortlight?> w/m²</p>
+                <img class="more" src="img/nav-arrow-right.svg">
+            </a>
+            <a href="uv.php" class="item">
+                <img class="icon" src="img/uv.svg">
+                <p class="itemname">UV</p>
+                <p class="itemvalue"><?=$result[8]?></p>
+                <img class="more" src="img/nav-arrow-right.svg">
+            </a>
         </main>
     </body>
 </html>

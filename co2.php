@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     tempChart.resize();
                 });
             </script>
-            <form action="windspeed.php" method="POST">
+            <form action="co2.php" method="POST">
                 <label for="start">Start Date:</label>
                 <input type="date" id="start" name="start">
 

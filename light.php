@@ -1,7 +1,7 @@
 <?php
 require_once("databse.php");
 
-$dataurl = "humiditytabledata.php";
+$dataurl = "lighttabledata.php";
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $start = filter_input(INPUT_POST, "start", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -25,23 +25,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <?php include_once("header.html")?>
         <main id="graphmain">
             <div class="chartcontainer">
-                <canvas id="tempChart" width="400" height="200"></canvas>
+                <canvas id="uvChart" width="400" height="200"></canvas>
             </div>
             <script>
                 fetch('<?=$dataurl?>')
                     .then(response => response.json())
                     .then(data => {
                         const timedate = data.map(item => item.timedate);
-                        const humidity = data.map(item => item.humidity);
+                        const light = data.map(item => item.light);
 
-                        const ctx = document.getElementById('tempChart').getContext('2d');
+                        const ctx = document.getElementById('uvChart').getContext('2d');
                         const tempChart = new Chart(ctx, {
                             type: 'line',
                             data: {
                                 labels: timedate,
                                 datasets: [{
-                                    label: 'Humidity',
-                                    data: humidity,
+                                    label: 'Light',
+                                    data: light,
                                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                     borderColor: 'rgba(75, 192, 192, 1)',
                                     borderWidth: 1
@@ -69,13 +69,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
 
                 window.addEventListener('beforeprint', () => {
-                    tempChart.resize(600, 600);
+                    uvChart.resize(600, 600);
                 });
                 window.addEventListener('afterprint', () => {
-                    tempChart.resize();
+                    uvChart.resize();
                 });
             </script>
-            <form action="humidity.php" method="POST">
+            <form action="light.php" method="POST">
                 <label for="start">Start Date:</label>
                 <input type="date" id="start" name="start">
 

@@ -15,7 +15,7 @@ require_once("secrets.php");
     if(!isset($dbconnect)){
       die("Geen connectie");
     }
-    $sql = $dbconnect->prepare("SELECT temp, rain, airPress, humidity, windspeed, winddirection, co2, timedate FROM weerstation ORDER BY timedate DESC LIMIT 1");
+    $sql = $dbconnect->prepare("SELECT temp, rain, airPress, humidity, windspeed, winddirection, co2, timedate, uv, light FROM weerstation ORDER BY timedate DESC LIMIT 1");
     $sql->execute();
     $result = $sql->fetchAll();
     $dbconnect = null;
