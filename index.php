@@ -74,7 +74,7 @@ getLastReadings();
             <a href="light.php" class="item">
                 <img class="icon" src="img/sun-light.svg">
                 <p class="itemname">Light</p>
-                <?php $shortlight = substr($result[9], 0, -3)?>
+                <?php $shortlight = substr($result[9], 0, -2)?>
                 <p class="itemvalue"><?=$shortlight?> w/m²</p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </a>
@@ -82,6 +82,12 @@ getLastReadings();
                 <img class="icon" src="img/uv.svg">
                 <p class="itemname">UV</p>
                 <p class="itemvalue"><?=$result[8]?></p>
+                <img class="more" src="img/nav-arrow-right.svg">
+            </a>
+            <a href="airpress.php" class="item">
+                <img class="icon" src="img/cloud.svg">
+                <p class="itemname">Air pressure</p>
+                <p class="itemvalue"><?=$result[2]?></p>
                 <img class="more" src="img/nav-arrow-right.svg">
             </a>
         </main>

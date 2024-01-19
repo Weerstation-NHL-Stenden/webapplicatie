@@ -1,7 +1,7 @@
 <?php
 require_once("databse.php");
 
-$dataurl = "lighttabledata.php";
+$dataurl = "airpresstabledata.php";
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $start = filter_input(INPUT_POST, "start", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     .then(response => response.json())
                     .then(data => {
                         const timedate = data.map(item => item.timedate);
-                        const light = data.map(item => item.light);
+                        const airpress = data.map(item => item.airpress);
 
                         const ctx = document.getElementById('uvChart').getContext('2d');
                         const tempChart = new Chart(ctx, {
@@ -40,8 +40,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                             data: {
                                 labels: timedate,
                                 datasets: [{
-                                    label: 'Light',
-                                    data: light,
+                                    label: 'Airpressure',
+                                    data: airpress,
                                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                     borderColor: 'rgba(75, 192, 192, 1)',
                                     borderWidth: 1
@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     tempChart.resize();
                 });
             </script>
-            <form action="light.php" method="POST">
+            <form action="airpress.php" method="POST">
                 <label for="start">Start Date:</label>
                 <input type="date" id="start" name="start">
 
