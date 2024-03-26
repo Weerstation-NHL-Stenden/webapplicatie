@@ -1,6 +1,8 @@
 import serial
 import mysql.connector
 
+os.system("sudo rfcomm bind 7 00:14:02:13:10:96")
+
 try:
     serial_port = serial.Serial("/dev/rfcomm7", 9600)
 except serial.SerialException as e:
